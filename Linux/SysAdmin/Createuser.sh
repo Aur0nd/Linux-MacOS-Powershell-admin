@@ -6,11 +6,13 @@ then
 	echo "You're not root, execute with Root!"
 fi
 # Make sure you got arguments
+read -n " Q. What is your name?: "
+read -r name
 
 if [[ "$#" -eq 0 ]]
 then
 	echo "You need to add at least one argument"
-	 
+	exit
 fi
 #Capture the first Argument and make it Variable 
 USER_NAME="$1"
