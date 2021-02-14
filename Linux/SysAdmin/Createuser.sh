@@ -4,8 +4,34 @@
 if [[ "$UID" -ne 0 ]]
 then
 	echo "You're not root, execute with Root!"
+exit 
 fi
 # Make sure you got arguments
+lib=default
+
+   # Create Username
+  # Repeat loop till you get y or a n
+until [[ $lib == "yes" ]] || [[ $lib == "no" ]]; do
+
+echo -n " Q. Do you want to automatically create username? (y/n) "
+read -r setusrn
+case $setusrn in 
+	[yY] | [yY][Ee][Ss] )
+	  USER_NAME="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16; echo)"
+	  echo ""
+	  ans="yes"
+	  ;;
+  	[nN] | [n|N][O|o] )
+	  echo -n " Q. What should be the username?"
+	  read -rs USER_NAME
+	  echo ""
+	  ;;
+	*) echo " Invalid answer. Please type y or n"
+	  ;;
+esac
+done 
+
+
 read -n " Q. What is your name?: "
 read -r name
 
