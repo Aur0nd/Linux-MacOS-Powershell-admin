@@ -1,0 +1,28 @@
+         # MUST HAVE TO MAKE SSH WORK WITH KEY
+
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+SyslogFacility AUTHPRIV
+AuthorizedKeysFile      .ssh/authorized_keys
+    # Comes this way by default 
+UsePAM yes #enable PAM authentication using ChallengeResponseAuthentication
+X11Forwarding yes
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+Subsystem       sftp    /usr/libexec/openssh/sftp-server
+
+
+                 # GOODIES/ SECURITY EXTRAS 
+
+                 #PasswordAuthentication no
+                 #ChallengeResponseAuthentication no
+                 #PubkeyAuthentication yes
+                 #AuthorizedKeysFile      /etc/ssh/authorized_keys
+                 #Port 5123
+                 #ListenAddress 0.0.0.0
+
+# SELinux about this change.
+# semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
