@@ -17,7 +17,8 @@ output=$?
 
 if [ $output -ne 0 ]
 then 
-mysql -u root -h db_host -p$db_password --execute="CREATE USER '$db_username'@'$db_host_in' IDENTIFIED BY '$db_password'; CREATE DATABASE $db_name;GRANT ALL ON *.* TO $db_username@$db_host; use people; create table register (id int(3), name varchar(50), lastname varchar(50), age varchar(3));"
+mysql -u root -h db_host -p$db_password --execute="CREATE DATABASE $db_name;GRANT ALL ON *.* TO $db_username@$db_host" || true 
+mysql -u root -h db_host -p$db_password $db_name -e "CREATE TABLE register (id int(3), name varchar(50), lastname varchar(50), age varchar(3))" || true 
 fi
 
 while [ $counter -lt 50 ]; do 
