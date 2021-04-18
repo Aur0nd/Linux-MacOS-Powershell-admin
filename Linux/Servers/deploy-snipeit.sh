@@ -1,3 +1,5 @@
+#Copyright (c) 2021 George Ziongkas
+
 #!/bin/bash
 
 
