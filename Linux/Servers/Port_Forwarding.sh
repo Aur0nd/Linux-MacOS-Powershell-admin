@@ -1,3 +1,7 @@
+
+#Copyright (c) 2021 George Ziongkas
+
+
 #!/bin/bash
 DB_HOST="${DB_HOST}"
 WHILE='0'
